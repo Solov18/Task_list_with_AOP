@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить задачу</title>
+    <!-- Подключаем Bootstrap для удобства стилизации -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Добавить задачу</h1>
+    <form action="/addtask" method="post">
+        <div class="form-group">
+            <label for="description">Описание</label>
+            <input type="text" class="form-control" id="description" name="description" required>
+            <div class="invalid-feedback">
+                Пожалуйста, введите описание задачи.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="deadline">Срок выполнения</label>
+            <input type="datetime-local" class="form-control" id="deadline" name="deadline" required>
+            <div class="invalid-feedback">
+                Пожалуйста, укажите срок выполнения задачи.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить задачу</button>
+    </form>
+</div>
+
+<!-- Скрипты для валидации формы -->
+<script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>
